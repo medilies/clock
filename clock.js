@@ -1,9 +1,14 @@
+/**
+ * @author medilies
+ */
+
 class Clock {
     /**
      *
      * @param {HTMLDivElement} clockEement
      */
-    constructor(clockContainer, clockSize = "400px") {
+    constructor(clockSize) {
+        const clockContainer = document.querySelector("#js-clock");
         this.clockSize = clockSize;
 
         this.clockSecondsElement = this.createSecondsHand();
@@ -32,13 +37,13 @@ class Clock {
 
             this.clockSecondsElement.style.transform = `rotate(${
                 (seconds * 360) / 60 + 90
-            }deg)`;
+            }deg) translateY(-50%)`;
             this.clockMinutesElement.style.transform = `rotate(${
                 (minutes * 360) / 60 + 90
-            }deg)`;
+            }deg) translateY(-50%)`;
             this.clockHoursElement.style.transform = `rotate(${
                 ((hours % 12) * 360) / 12 + 90
-            }deg)`;
+            }deg) translateY(-50%)`;
         }, 1000);
     }
 
@@ -50,6 +55,7 @@ class Clock {
         clockBody.style.height = this.clockSize;
         clockBody.style.border = "1px solid #000";
         clockBody.style.borderRadius = "50%";
+        clockBody.style.overflow = "hidden";
         return clockBody;
     }
 
@@ -78,7 +84,7 @@ class Clock {
         clockMinutesColored.style.width = "38%";
         clockMinutesColored.style.backgroundColor = "#333";
 
-        this.yCentering(clockMinutes, minutesHandHeight);
+        this.yCentering(clockMinutes);
 
         return clockMinutes;
     }
@@ -93,7 +99,7 @@ class Clock {
         clockHoursColored.style.width = "30%";
         clockHoursColored.style.backgroundColor = "#222";
 
-        this.yCentering(clockHours, hoursHandHeight);
+        this.yCentering(clockHours);
 
         return clockHours;
     }
@@ -109,6 +115,7 @@ class Clock {
         handContainer.style.zIndex = "2";
 
         const hand = document.createElement("div");
+        hand.style.borderRadius = "5px 0 0 5px";
         handContainer.appendChild(hand);
 
         const placeHolder = document.createElement("div");
@@ -128,7 +135,7 @@ class Clock {
         center.style.borderRadius = "50%";
         center.style.zIndex = "4";
 
-        this.yCentering(center, centerHeight);
+        this.yCentering(center);
 
         center.style.position = "absolute";
         center.style.top = `50%`;
@@ -167,13 +174,9 @@ class Clock {
         return numbersContainer;
     }
 
-    yCentering(clockComponent, clockComponentHeight = 0) {
+    yCentering(clockComponent) {
         clockComponent.style.position = "absolute";
         clockComponent.style.top = `50%`;
         clockComponent.style.transform = "translateY(-50%)";
     }
 }
-
-const clockContainer = document.querySelector("#js-clock");
-clockContainer.style.overflow = "hidden";
-const clock = new Clock(clockContainer);
