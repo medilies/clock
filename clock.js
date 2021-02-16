@@ -37,13 +37,13 @@ class Clock {
 
             this.clockSecondsElement.style.transform = `rotate(${
                 (seconds * 360) / 60 + 90
-            }deg) translateY(-50%)`;
+            }deg) translateY(-25%)`;
             this.clockMinutesElement.style.transform = `rotate(${
                 (minutes * 360) / 60 + 90
-            }deg) translateY(-50%)`;
+            }deg) translateY(-25%)`;
             this.clockHoursElement.style.transform = `rotate(${
                 ((hours % 12) * 360) / 12 + 90
-            }deg) translateY(-50%)`;
+            }deg) translateY(-25%)`;
         }, 1000);
     }
 
@@ -126,7 +126,7 @@ class Clock {
     }
 
     createCenter() {
-        const centerHeight = 12;
+        const centerHeight = 16;
         const center = document.createElement("div");
 
         center.style.height = centerHeight + "px";
@@ -153,7 +153,6 @@ class Clock {
         numbersContainer.style.height = this.clockSize;
         numbersContainer.style.width = this.clockSize;
         numbersContainer.style.fontSize = "2rem";
-        numbersContainer.style.fontFamily = "sans-serif";
 
         for (let i = 1; i <= 12; i++) {
             const number = document.createElement("div");
@@ -165,6 +164,7 @@ class Clock {
 
             const currentNumber = document.createElement("p");
             currentNumber.innerText = i;
+            currentNumber.style.margin = "0.3rem";
             currentNumber.style.transform = `rotate(${-30 * i}deg)`;
 
             number.appendChild(currentNumber);
@@ -177,6 +177,6 @@ class Clock {
     yCentering(clockComponent) {
         clockComponent.style.position = "absolute";
         clockComponent.style.top = `50%`;
-        clockComponent.style.transform = "translateY(-50%)";
+        clockComponent.style.transform = "translateY(-25%)";
     }
 }

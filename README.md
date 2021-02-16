@@ -1,4 +1,6 @@
-# How to integrate this clock into your page
+# Local clock
+
+## How to integrate this clock into your page
 
 -   Inject the following _div_ where you want to position the clock
 
@@ -17,4 +19,25 @@
     const clockSquareSize = "300px";
     const clock = new Clock(clockSquareSize);
 </script>
+```
+
+-   Also add these rules to your CSS
+
+```CSS
+#js-clock,
+#js-clock * {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+```
+
+**OPTIONAL:** https://medilies.github.io/clock/ Numbers have _Sarina_ fontfamily you can set it with the following CSS
+
+```CSS
+#js-clock,
+#js-clock * {
+    font-family: "Sarina", cursive;
+    @import url("https://fonts.googleapis.com/css2?family=Sarina&display=swap");
+}
 ```
