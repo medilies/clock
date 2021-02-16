@@ -9,7 +9,7 @@
 ```
 
 -   Add **clock.js** script file to your project and be precise with the path in src attribute
--   Add the following _script_ elements before </html>
+-   Add the following _script_ elements before `</html>`
 -   Change _clockSquareSize_ (heigth + width) if you do not want the clock to be 300x300px
 
 ```html
@@ -32,7 +32,7 @@
 }
 ```
 
-**OPTIONAL:** https://medilies.github.io/clock/ Numbers have _Sarina_ fontfamily you can set it with the following CSS
+**OPTIONAL:** As shown in https://medilies.github.io/clock/ Numbers have _Sarina_ fontfamily. You can set it with the following CSS
 
 ```CSS
 #js-clock,
@@ -41,3 +41,8 @@
     @import url("https://fonts.googleapis.com/css2?family=Sarina&display=swap");
 }
 ```
+
+**NOTE** If you whish to edit the clock styling do it inside *clock.js* file with HTMLElement.style.rule = "value"
+
+- It is discouraged to edit positionning
+- take liberty changing colors and font style
